@@ -212,7 +212,58 @@ Sometimes, it may be meaningful to add or remove items from the beginning of an 
 
 **BigO of Array Methods**
 
+- push() - O(1)
+- pop() - O(1)
+- shift() - O(N)
+- unshift() - O(N)
+- concat() - O(N)
+- slice() - O(N)
+- splice() - O(N)
+- sort() - O(N \* log N)
+- forEach/map/filter/reduce/etc. - O(N)
+
+---
+
 ## Section: 3 - Problem Solving Approach
+
+Problem Solving
+
+- Understand the Problem
+
+  - Can I restate the problem in my own words?
+  - What are the inputs that go into the problem?
+  - What are the outputs that should come from the solution?
+  - Can the outputs be determined from the inputs?
+  - How should I label the important pieces of data?
+
+- Explore Concrete Examples
+
+  - Start with Simple Examples
+  - Progress to more Complex Examples
+  - Explore Examples with Empty Inputs
+  - Explore Examples with Invalid Inputs
+
+- Break It Down
+
+  - Write out steps needed to take, or small comments.
+  - Pseudo Code
+
+- Solve/Simplify
+
+  - Solve the problem, if you can't, solve a simpler problem.
+  - Find the core difficulty in what you're trying to do.
+  - Temporarily ignore that difficulty
+  - Write a simplified solution
+  - Then incorporate that difficulty back in
+
+- Look Back and Refactor
+  - Can you check the result?
+  - Can you derive the result differently?
+  - Can you understand it at a glance?
+  - Can you use the result or method for some other problem?
+  - Can you improve the performance of your solution?
+  - Can you think of other ways to refactor?
+  - How have other people solved this problem?
 
 ## Section: 4 - Problem Solving Patterns
 
@@ -243,15 +294,3 @@ Sometimes, it may be meaningful to add or remove items from the beginning of an 
 ## Section: 17 - Graph Traversal
 
 ## Section: 18 - Dijkstra's Algorithm ( Shortest Path )
-
-```
-
-```
-
-```
-
-```
-
-```
-
-```
