@@ -267,6 +267,29 @@ Problem Solving
 
 ## Section: 4 - Problem Solving Patterns
 
+Some patterns include
+
+- Frequency Counter
+
+  - Using Objects or Sets to collect values/frequencies of values
+  - This can often avoid the need for nested loops or O(N^2) operations with arrays/strings.
+
+    - _comparing values_
+    - _tracking frequencies_
+
+- Multiple Pointers
+
+  - Creating _pointers_ or values that correspond to an index or position and move towards the begining, end or middle based on a certain condition.
+  - Very efficient for solving problems with minimal space complexity as well.
+  - Good for **sorted** data structures. Doesn't work well for unsorted data structures.
+
+* Sliding Window
+* Divide and Conquer
+* Dynamic Programming
+* Greedy Algorithms
+* Backtracking
+* Many more!
+
 ## Section: 5 - Recursion
 
 ## Section: 6 - Searching Algorithms
