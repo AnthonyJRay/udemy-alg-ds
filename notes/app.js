@@ -193,16 +193,67 @@ const b = [4, 1, 9];
 // console.log(sumZero([-4, -3, -2, -1, 0, 5, 10])) // No pairs, throws error
 
 // Count the amount of Unique Values in an Array.
+// The time complexity of this pattern is O(n)
 
-function countUniqueValues(arr) {
-    let i = 0;
-    for (let j = 0; j < arr.length; j++) {
-        if (arr[i] !== arr[j]) {
-            i++;
-            arr[i] = arr[j];
-        }
-    }
-    return i + 1;
+// function countUniqueValues(arr) {
+//     if (arr.length === 0) return 0;
+//     let i = 0;
+//     for (let j = 0; j < arr.length; j++) {
+//         if (arr[i] !== arr[j]) {
+//             i++;
+//             arr[i] = arr[j];
+//         }
+//     }
+//     return i + 1;
+// }
+// const myArray = [-5, -5, -2, -1, 7, 7, 12]
+// console.log(countUniqueValues(myArray));
+
+// -----------------------------------------------------
+
+// Function that returns the largest sum of a sub string in an array.
+// e.g. if num = 3, find the largest sum of 3 sub string elements.
+// The time complexity for this is O(n^2) because of the nested forLoops.
+
+// function maxSubArraySum(arr, num) {
+//     if (num > arr.length) {
+//         return null;
+//     }
+//     var max = -Infinity; // To account for negatives numbers
+//     for (let i = 0; i < arr.length - num + 1; i++) {
+//         temp = 0;
+//         for (let j = 0; j < num; j++) {
+//             temp += arr[i + j];
+//         }
+//         if (temp > max) {
+//             max = temp;
+//         }
+//     }
+//     return max;
+// }
+
+// console.log(maxSubArraySum([2, 6, 9, 2, 1, 8, 5, 6, 3], 3));
+
+// Same function refactored to O(n) time complexity.
+
+// function maxSubArraySum(arr, num) {
+//     let maxSum = 0;
+//     let tempSum = 0;
+//     if (arr.length < num) return null;
+//     for (let i = 0; i < num; i++) {
+//         maxSum += arr[i];
+//     }
+//     tempSum = maxSum;
+//     for (let i = num; i < arr.length; i++) {
+//         tempSum = tempSum - arr[i - num] + arr[i];
+//         maxSum = Math.max(maxSum, tempSum); // Could also just use a simple if statement and compare the two, then setting whichever is greater to maxSum.
+//     }
+//     return maxSum;
+// }
+// console.log(maxSubArraySum([2, 6, 9, 2, 1, 8, 5, 6, 3], 3));
+
+function dupes(...args) {
+    console.log(args)
 }
-const myArray = [-5, -5, -2, -1, 7, 7, 12]
-console.log(countUniqueValues(myArray));
+
+dupes('a', 'a', 'b', 'e', 2, 5, 6, 7);

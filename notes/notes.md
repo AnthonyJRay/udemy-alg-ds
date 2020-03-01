@@ -283,12 +283,65 @@ Some patterns include
   - Very efficient for solving problems with minimal space complexity as well.
   - Good for **sorted** data structures. Doesn't work well for unsorted data structures.
 
-* Sliding Window
-* Divide and Conquer
-* Dynamic Programming
-* Greedy Algorithms
-* Backtracking
-* Many more!
+  _Visual Example_
+  Finding sum of a substring on numbers
+
+```
+[  1,  2,  3,  4,  5,  6,  7,  8,  9]
+   ^  ^
+[  1,  2,  3,  4,  5,  6,  7,  8,  9]
+    ^       ^
+[  1,  2,  3,  4,  5,  6,  7,  8,  9]
+    ^              ^
+[  1,  2,  3,  4,  5,  6,  7,  8,  9]
+    ^                 ^
+[  1,  2,  3,  4,  5,  6,  7,  8,  9]
+    ^                       ^
+[  1,  2,  3,  4,  5,  6,  7,  8,  9]
+    ^                           ^
+[  1,  2,  3,  4,  5,  6,  7,  8,  9]
+    ^                                 ^
+[  1,  2,  3,  4,  5,  6,  7,  8,  9]
+   ^                                     ^
+[  1,  2,  3,  4,  5,  6,  7,  8,  9]
+        ^   ^
+[  1,  2,  3,  4,  5,  6,  7,  8,  9]
+        ^        ^
+[  1,  2,  3,  4,  5,  6,  7,  8,  9]
+        ^             ^
+```
+
+- Sliding Window
+  - Creating a _window_ which can either be an array or number from one position to another.
+  - Depending on a certain condition, the window either increases or closes(and a new window is created)
+  - Very useful for keep track of a subset of data in an array/string etc.
+
+_Visual Example_
+
+```
+
+[ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+^ ^
+[ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+^ ^
+[ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+^ ^
+[ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+^ ^
+[ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+^ ^
+
+```
+
+- Divide and Conquer
+
+  - This pattern involves dividing a data set into smaller chunks and then repeating a process with a subset of data.
+  - This pattern can TREMENDOUSLY _decrease_ time complexity.
+
+- Dynamic Programming
+- Greedy Algorithms
+- Backtracking
+- Many more!
 
 ## Section: 5 - Recursion
 
@@ -317,3 +370,7 @@ Some patterns include
 ## Section: 17 - Graph Traversal
 
 ## Section: 18 - Dijkstra's Algorithm ( Shortest Path )
+
+```
+
+```
