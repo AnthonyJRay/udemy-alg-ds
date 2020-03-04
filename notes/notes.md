@@ -345,6 +345,44 @@ _Visual Example_
 
 ## Section: 5 - Recursion
 
+We can write a solution to a problem in 2 ways,
+
+- Iteratively (loops)
+- Recursive (function calling itself)
+
+Sometimes Recursion is a "cleaner" alternative to Iteration.
+
+**The Call Stack**
+
+The _call stack_ is what manages function calls and their order.
+
+The "call stack" is actually a data structure called a "_stack_". (re Stacks and Queues)
+
+- Anytime a function is invoked, it's placed (pushed) to the top of the call stack.
+- When JavaScript sees the return keyword or when the function ends, the compiler will remove (pop) it from the stack.
+
+You might be used to functions being pushed on the call stack and popped off when they are done.
+
+When writing "recursive" functions. functions will continue pushing new functions onto the call stack.
+
+Invoke the same function with different input until you reach your base case.
+
+The base is the condition when the recursion ends.
+
+It's important to remember a "return" statement even if you're not returning anything. This would allow the recursion to break out of the base case.
+
+Common pitfalls with Recursion, where things can go wrong..
+
+- No base case
+- Forgetting to return or returning the wrong thing
+- Stack overflow! ( Maximum call stack size exceeded )
+
+**Helper Method Recursion**
+
+Commong recursive design pattern.
+
+Good for when you are needing to compile an array or a list of data.
+
 ## Section: 6 - Searching Algorithms
 
 ## Section: 7 - Sorting Algorithms
