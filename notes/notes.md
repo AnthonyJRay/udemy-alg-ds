@@ -383,6 +383,51 @@ Commong recursive design pattern.
 
 Good for when you are needing to compile an array or a list of data.
 
+---
+
+```js
+function outer(input) {
+  var outerScopedVariable = [];
+
+  function helper(helperInput) {
+    // modify the outerScopedVariable
+    helper(helperInput--);
+  }
+  helper(input);
+
+  return outerScopedVariable;
+}
+```
+
+When using recursion, variables get set or reset to the values they are assigned inside the function. So on each function call, you'll end up losing that data if needed. I believe this is where you can take advantage of closures. Wrapping the recursive function inside of a wrapping function, that holds things like variables, arrays, objects, the helper function can still have access to them if it needs because of the closure. Likewise, your variables are safe from being assigned the values assigned to them with each recursive call, and new execution contexts and variable environments.
+
+```js
+function collectOddValues(arr) {
+  let result = [];
+
+  function helper(helperInput) {
+    if (helperInput.length === 0) {
+      return;
+    }
+
+    if (helperInput[0] % 2 !== 0) {
+      result.push(helperInput[0]);
+    }
+    helper(helperInut.slice(1));
+  }
+
+  helper(arr);
+
+  return result;
+}
+```
+
+The above code, takes in an array of numbers, and outputs all the odd values.
+
+First, there's a wrapper function, "closing" in the result array.
+There is also the recursive function that contains the logic. With each recursive call of it,
+it is calling itself with the _slice()_ method setting it's value to 1, targeting only the first value. As you can see in the checks and _push_ methods, we are always targeting only the first vlue, or index 0 value. Running slice(1) on the parameter each call, will return a copy of the original array, with the first index value being sliced out each time. This is where a base case comes in and is important. Without the if helperInput.length check, recursion would continue until you encountered that max stack size limit.
+
 ## Section: 6 - Searching Algorithms
 
 ## Section: 7 - Sorting Algorithms
@@ -408,6 +453,10 @@ Good for when you are needing to compile an array or a list of data.
 ## Section: 17 - Graph Traversal
 
 ## Section: 18 - Dijkstra's Algorithm ( Shortest Path )
+
+```
+
+```
 
 ```
 
