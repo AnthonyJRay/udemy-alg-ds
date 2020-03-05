@@ -428,6 +428,51 @@ First, there's a wrapper function, "closing" in the result array.
 There is also the recursive function that contains the logic. With each recursive call of it,
 it is calling itself with the _slice()_ method setting it's value to 1, targeting only the first value. As you can see in the checks and _push_ methods, we are always targeting only the first vlue, or index 0 value. Running slice(1) on the parameter each call, will return a copy of the original array, with the first index value being sliced out each time. This is where a base case comes in and is important. Without the if helperInput.length check, recursion would continue until you encountered that max stack size limit.
 
+```js
+function collectOddValues(arr) {
+  let newArr = [];
+
+  if (arr.length === 0) {
+    return newArr;
+  }
+
+  if (arr[0] % 2 !== 0) {
+    newArr.push(arr[0]);
+  }
+
+  newArr = newArr.concat(collectOddValues(arr.slice(1)));
+  return newArr;
+}
+```
+
+You can also use "Pure Recursion" and eliminate the need for a wrapper function to house the array.
+Here, i'm using just one function.
+
+- Looks at [0] index, determines if it's even or odd, then pushes it to the array.
+- reassigning the new array, to "concat" the same recursive code, will concatenate the arrays returned from each function call, all the way up to the original array, and then just returning that array.
+
+Remember, when a function is called, it's put onto a _stack_ data structure. So each time the function calls itself, each call is put on the stack, ontop of the previous function call. ONLY until the base case is met, and then function calls end, do they start to return 1 by 1 back up.
+Or back _down_ the stack, depending on how you picture it. I picture it as a stack of coins, so downward would be a easier picture to remember, instead of back _up_ for instance a tree.
+
+As each function returns the _newArr_ array, the array's are being concatenated until the last function call which is concatenated together and returned.
+
+Instructor illustrates a nice representation of what is happening..
+
+```js
+collectOddValue([1,2,3,4,5])
+    [1].concat(collectOddValues([2,3,4,5]))
+        [].concat(collectOddValues([3,4,5]))
+            [3].concat(collectOddValues([4,5]))
+                [].concat(collectOddValues([5]))
+                    [5].concat(collectOddValues([]))
+```
+
+**Pure Recursion Tips**
+
+- For arrays, use methods like _slice, the spread operator, and concat_ that make copies of arrays so you do not _mutate_ them.
+- Remember that strings are _immutable_, so you will need to use methods like _slice, substr, or substring_ to make copies of strings.
+- To make copies of objects, use _Object.assign_ or the _spread operator_
+
 ## Section: 6 - Searching Algorithms
 
 ## Section: 7 - Sorting Algorithms
