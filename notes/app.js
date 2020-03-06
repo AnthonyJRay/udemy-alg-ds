@@ -508,6 +508,8 @@
 //     return base * power(base, exponent - 1);
 // }
 
+// console.log(power(2, 4));
+
 // ----------------------------------------------------
 
 // FACTORIAL SOLUTION
@@ -702,3 +704,23 @@
 // }
 
 // ----------------------------------------------------
+
+// function add(num) {
+//     if (num <= 0) {
+//         return 0;
+//     } else {
+//         return num + add(num - 1);
+//     }
+// }
+
+// console.log(add(5));
+
+function lessThan(a, b) {
+    if (a < b) {
+        return ' a is less than b';
+    } else {
+        return ' a is not less than b';
+    }
+}
+
+console.log(lessThan(5, 4))
