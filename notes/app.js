@@ -714,13 +714,3 @@
 // }
 
 // console.log(add(5));
-
-function lessThan(a, b) {
-    if (a < b) {
-        return ' a is less than b';
-    } else {
-        return ' a is not less than b';
-    }
-}
-
-console.log(lessThan(5, 4))
