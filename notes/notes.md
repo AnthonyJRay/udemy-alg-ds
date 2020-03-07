@@ -475,6 +475,46 @@ collectOddValue([1,2,3,4,5])
 
 ## Section: 6 - Searching Algorithms
 
+**Linear Search**
+
+Given an _unsorted_ array, the best way to search through it is with _Linear Search_
+
+JavaScript has search methods built-in like,
+
+- indexOf
+- includes
+- find
+- findIndex
+
+All these methods are done with Linear Search.
+
+Linear Search would be starting at the beginning, and checking each index 1 by 1 until you find what you're looking for, if it isn't there, return false, or -1.
+
+The time complexity of Linear Search at BEST is O(1). Depending on the size of the data being searched, you would need to already _know_ or get lucky.
+
+The average time is also the worst case time complexity of O(n).
+
+Linear Search is O(n) Time Complexity.
+
+**Binary Search**
+
+Binary Search can be much faster than Linear Search.
+
+Rather than eliminating one element at a time, you can eliminate half of the remaining elements at a time.
+
+Binary Search only works on _sorted_ arrays, or data.
+
+The idea of Binary Search is _Divide and Conquer_
+
+_Time Complexity_
+
+Worst/Average Case: O(log n)
+Best Case: O(1)
+
+As the size of data _doubles_ it takes 1 extra step.
+
+**Sorting Algorithms**
+
 ## Section: 7 - Sorting Algorithms
 
 ## Section: 8 - Intro to Data Structures

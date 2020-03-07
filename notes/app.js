@@ -163,7 +163,6 @@
 
 // console.log(validAnagram("anagram", "agnaram"));
 
-
 // -----------------------------------------
 
 // This is using a multiple pointers pattern. Setting variables has index values, one starts from the left, or start. The other starts from the right or end, and they work towards the middle.
@@ -252,7 +251,6 @@
 // }
 // console.log(maxSubArraySum([2, 6, 9, 2, 1, 8, 5, 6, 3], 3));
 
-
 // Check for Duplicates exercise
 // My Solution
 // --------------
@@ -339,7 +337,6 @@
 // console.log(areThereDuplicates('a', 'b', 'c', 'a'))
 // console.log(areThereDuplicates('a', 'b', 'f', 'e', 'b'))
 
-
 // ---------------------------------------------------------------------
 
 // // Pair Average using Multiple Pointers
@@ -412,7 +409,6 @@
 
 // console.log(maxSubarraySum([1, 3, 6, 8, 13, 17], 3))
 
-
 // Min Sub Array Length
 
 // Write a function called minSubArrayLen which accepts two parameters, and array of POSITIVE integers and a POSITIVE integer.
@@ -426,7 +422,6 @@
 // minSubArrayLen([2,3,1,2,4,3], 7) => 2, because [4,3] is the smallest subarray.
 // minsubArrayLen([2,1,6,5,4], 9) => 2, because [5,4] is the smallest subarray.
 // minsubArrayLen([1,4,16,22,5,7,8,9,10], 39) // 3
-
 
 // function minSubArrayLen(nums, sum) {
 //     let total = 0;
@@ -472,7 +467,6 @@
 // findLongestSubstring('thisishowwedoit') => 6
 
 // Time Complexity => O(n)
-
 
 // function findLongestSubstring(str) {
 //     let longest = 0;
@@ -714,3 +708,58 @@
 // }
 
 // console.log(add(5));
+
+// LINEAR SEARCH
+
+// function linearSearch(arr, val) {
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] === val) {
+//       return i;
+//     }
+//   }
+//   return -1;
+// }
+
+// console.log(linearSearch([10, 15, 20, 25, 30], 125));
+
+// function binarySearch(arr, val) {
+//     let left = 0;
+//     let right = arr.length - 1;
+//     let middle = Math.floor((left + right) / 2);
+
+//     while (arr[middle] !== val && start <= end) {
+//         if (val < arr[middle]) {
+//             end = middle - 1;
+//         } else {
+//             start = middle + 1;
+//         }
+//         middle = Math.floor((start + end) / 2);
+//     }
+//     if (arr[middle] === val) {
+//         return middle;
+//     }
+//     return -1;
+// }
+
+// console.log(binarySearch([1, 3, 4, 5, 7, 8, 10, 16, 19], 16))
+// console.log(binarySearch([1, 2, 3, 4, 5], 2))
+// console.log(binarySearch([5, 6, 10, 13, 14, 18, 30, 34, 35, 37, 40, 44, 64, 79, 84, 86, 95, 96, 98, 99], 10))
+
+// console.log(binarySearch([1, 2, 3, 4, 5], 6))
+
+// function stringSearch(str1, str2) {
+//     let counter;
+
+//     for (let i = 0; i < str1.length; i++) {
+
+//         for (let j = 0; j < str2.length; j++) {
+//             if (string2[j] !== str1[i + j]) {
+//                 break;
+//             }
+//             if (j === str2.length - 1) {
+//                 counter++
+//             }
+//         }
+//     }
+//     return counter;
+// }
