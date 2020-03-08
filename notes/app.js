@@ -798,15 +798,41 @@
 
 // selectionSort([34, 22, 10, 19, 17])
 
-function insertionSort(arr) {
-    for (let i = 1; i < arr.length; i++) {
-        let currentValue = arr[i];
-        for (let j = i - 1; j >= 0 && arr[j] > currentValue; j--) {
-            arr[j + 1] = arr[j]
+// function insertionSort(arr) {
+//     for (let i = 1; i < arr.length; i++) {
+//         let currentValue = arr[i];
+//         for (let j = i - 1; j >= 0 && arr[j] > currentValue; j--) {
+//             arr[j + 1] = arr[j]
+//         }
+//         arr[j + 1] = currentValue;
+//     }
+//     return arr;
+// }
+
+// insertionSort([2, 1, 9, 76, 4]);
+
+function merge(arr1, arr2) {
+    let results = [];
+    let i = 0;
+    let j = 0;
+    while (i < arr1.length && j < arr2.length) {
+        if (arr2[j] > arr1[i]) {
+            results.push(arr1[i]);
+            i++;
+        } else {
+            results.push(arr2[j])
+            j++;
         }
-        arr[j + 1] = currentValue;
     }
-    return arr;
+    while (i < arr1.length) {
+        results.push(arr1[i])
+        i++;
+    }
+    while (j < arr2.length) {
+        results.push(arr2[j])
+        i++;
+    }
+    return results;
 }
 
-insertionSort([2, 1, 9, 76, 4]);
+merge([1, 10, 50], [2, 14, 99, 100])

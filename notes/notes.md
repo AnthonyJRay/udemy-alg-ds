@@ -735,6 +735,26 @@ A niche edge case situation where insertion sort is good is if for some reason y
 
 **Intermediate Sorting Algorithms**
 
+- The basic algorithms (Bubble, Insertion, and Selection Sort) don't scale very well. They work with small amounts of data, but an array with 100,000 elements, these would take quite some time to finish.
+
+- Fortunately there are faster sorting algorithms (Merge, Quick, Radix Sort)
+
+- These are a family of sorting algorithms that can improve time complexity from O(n^2) to O(n log n).
+
+- With these algorithms there is a tradeoff between _efficiency_ and _simplicity_
+
+- The more efficient algorithms are much less simple, and generally take longer to understand.
+
+---
+
+**Merge Sort**
+
+_Merge Sort_ is like a combination of 3 things, splitting, sorting, and then merging.
+
+_Merge Sort_ exploits the fact that arrays of 0 or 1 element are always sorted.
+
+_Merge Sort_ works by decomposing an array into smaller arrays of 0 or 1 elements, then build up a newly sorted array.
+
 ---
 
 ## Section: 8 - Intro to Data Structures
