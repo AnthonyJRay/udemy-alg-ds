@@ -513,9 +513,229 @@ Best Case: O(1)
 
 As the size of data _doubles_ it takes 1 extra step.
 
-**Sorting Algorithms**
-
 ## Section: 7 - Sorting Algorithms
+
+- Implement Bubble Sort
+- Implement Selection Sort
+- Implement Insertion Sort
+
+These are the least efficient of the sorting algorithms, but much simpler.
+
+It's good to understand why it is important to learn these more simpler algorithms.
+
+Some of these simpler sorting algorithms perform really well for certain special circumstances.
+
+_JavaScript built-in sorting methods_
+
+The JavaScript built-in _sort()_ method might work well on strings, or letters, but it doesn't work well with numbers. The reason is, is that it converts those numbers to strings and sorts them by their _Unicode_ code value, instead of their number or integer value.
+
+This creates some bizzare behavior and sorting results when working with numbers.
+
+The _sort()_ method, can take an optional _comparator_ function. Which you can then use to tell JavaScript _how_ you want it to sort that data.
+
+The comparator looks at pairs of elements (a and b), and determines their sort order based on the return value.
+
+- If it returns a negative number, _a_ should come before _b_
+
+- If it returns a negative number, _a_ should come AFTER _b_
+
+- If it returns 0, _a_ and _b_ are the same as far as the sort is concerned.
+
+```js
+function numberCompare(num1, num2) {
+  return num1 - num2;
+}
+
+[6, 4, 15, 10].sort(numberCompare);
+// [ 4, 6, 10, 15]
+```
+
+If you were to not use a comparator function, the output would like something like...
+
+```js
+// [10, 15, 4, 6]
+```
+
+This is why it is important to understand the _sort()_ method, and the _comparator_ function.
+
+You can use a comparator function to instead of sorting strings alphabetically, to sort them shortest to longest based on their length.
+
+```js
+function compareByLen(str1, str2) {
+  return str1.length - str2.length;
+}
+```
+
+All of these sorting orders can be done in reverse by simply reversing the order of the first and second paramter being passed to the comparator function.
+
+---
+
+**Bubble Sort**
+
+---
+
+_Bubble Sort_ isn't commonly used, as it doesn't perform very well, but there is one use case where it does excel.
+
+_Bubble Sort_ is a sorting algorithm where the largest values bubble up to the top.
+
+_Swapping function examples_
+
+```js
+// ES5 way
+function swap(arr, index1, index2) {
+  let temp = index1;
+  index1 = index2;
+  index2 = temp;
+}
+
+// ES6 way
+function swap(arr, index1, index2) {
+  [arr[index1], arr[index2]] = [arr[index2], arr[index1]];
+}
+
+// Both functions accomplish the same goal. The ES6 way has a lower Space Complexity, but isn't as readable.
+```
+
+```js
+function bubbleSort(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length; j++) {
+      if (arr[j] > arr[j + 1]) {
+        let temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
+      }
+    }
+  }
+  return arr;
+}
+
+bubbleSort([37, 45, 29, 8]);
+```
+
+This is a working _Bubble Sort_ solution. The problem is that it isn't very optimized. It makes needless comparisons from start to finish on each pass through the array.
+
+It also, compares outside the array. When _j_ becomes the end of the array, and it compares to _j + 1_ it is comparing to an index that is 1 higher than the end would wouldn't exist, therefore it compares j to undefined.
+
+_Instead_ what you want is for it to stop comparing once it gets to the end, and shrink the end each time an element gets sorted, or bubble to it.
+
+```js
+function bubbleSort(arr) {
+  for (let i = arr.length; i > 0; i--) {
+    for (let j = 0; j < i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        let temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
+      }
+    }
+  }
+  return arr;
+}
+
+bubbleSort([37, 45, 29, 8]);
+```
+
+You can further optimize _Bubble Sort_ when in situations where you array, or Data is nearly sorted. When it is nearly or close to being sorted, you can alter the Bubble Sort algorithm with a boolean flag to say if swaps were made or not, and break out of the loop if no swaps were made.
+
+Without this, if you had an array which required only 1 item to be sorted, the bubble sort algorithm would continue looping and comparing until reaching the end, even if the array had finished sorting in a previous iteration.
+
+```js
+// Bubble Sort | noSwap Optimization
+function bubbleSort(arr) {
+  let noSwaps;
+  for (let i = arr.length; i > 0; i--) {
+    noSwaps = true;
+    for (let j = 0; j < i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        let temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
+        noSwaps = false;
+      }
+    }
+    if (noSwaps) break;
+  }
+  return arr;
+}
+```
+
+Here, we are initializing a variable to act as a flag. If no swaps are made, set it to true, once a swap is made, set it to false.
+
+So after each iteration of the _inner loop_ it will check if noSwaps is true or false. If true, break out of the loops entirely, if false, continue looping.
+
+The _Time Complexity_ for _Bubble Sort_ is roughly O(N^2).
+
+However, in the case your data or array is almost or nearly sorted, using the _noSwaps_ optimization, it's closer to O(n) or Linear Time.
+
+That would be a _best case_ for Bubble Sort, and ONLY if you know your data is almost or nearly sorted.
+
+---
+
+**Selection Sort**
+
+Similar to Bubble Sort, but instead of first placing large values into a sorted position, it places small values into sorted position.
+
+```js
+function selectionSort(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let min = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[min]) {
+        min = j;
+      }
+    }
+    if (i !== min) {
+      let temp = arr[i];
+      arr[i] = arr[min];
+      arr[min] = temp;
+    }
+  }
+  return arr;
+}
+
+selectionSort([34, 22, 10, 19, 17]);
+```
+
+Without using the check for the swap, you would end up swapping even if the position you started in was the lowest. This would swap an unnecessary amount of times.
+
+_Selection Sort_ has a Time Complexity of O(N^2) also, like Bubble Sort.
+
+The only area where Selection Sort is effective, is if you are trying to minimize the amount of swaps you are doing.
+
+Where _Bubble Sort_ performs many swaps to get the largest value to the end, _Selection Sort_ only makes 1 swap at the end of each loop.
+
+This would only be important if for some reason you are worried about writing to memory, which is not very often.
+
+Selection Sort is not common to use, but very easy to understand and implement.
+
+---
+
+**Insertion Sort**
+
+Builds up the sort, by gradually creating a larger left half which is always sorted.
+
+```js
+function insertionSort(arr) {
+  for (let i = 1; i < arr.length; i++) {
+    let currentValue = arr[i];
+    for (let j = i - 1; j >= 0 && arr[j] > currentValue; j--) {
+      arr[j + 1] = arr[j];
+    }
+    arr[j + 1] = currentValue;
+  }
+  return arr;
+}
+```
+
+Insertion Sort time complexity is also O(N^2).
+A niche edge case situation where insertion sort is good is if for some reason you need an _online_ algorithm. Meaning if you have data coming in realtime, and you want/need to sort it as it comes in, insertion sort would be a good option.
+
+---
+
+**Intermediate Sorting Algorithms**
+
+---
 
 ## Section: 8 - Intro to Data Structures
 
@@ -538,6 +758,10 @@ As the size of data _doubles_ it takes 1 extra step.
 ## Section: 17 - Graph Traversal
 
 ## Section: 18 - Dijkstra's Algorithm ( Shortest Path )
+
+```
+
+```
 
 ```
 
