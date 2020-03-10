@@ -755,6 +755,16 @@ _Merge Sort_ exploits the fact that arrays of 0 or 1 element are always sorted.
 
 _Merge Sort_ works by decomposing an array into smaller arrays of 0 or 1 elements, then build up a newly sorted array.
 
+Most _merge sort_ algorithms take advangage of _Recursion_
+
+- Break up the array into halves until you have arrays that are empty or have one element.
+  - One good way to do this is by using the _slice()_ method.
+  - From 0 to the middle of the array, then from the middle of the array to 0.
+- Then, call the mergeSort again, to break each half, into their own halves, continuing recursively.
+- The base case being that each arrays length, is either less than or equal to one. ( <= 1 )
+- That way the length of the arrays are either 1, or 0.
+- Once you have smaller sorted arrays, ( arrays with length of 1 or 0 are assumed sorted ), merge those arrays with other sorted arrays until you are back at the full length of the array.
+
 ---
 
 ## Section: 8 - Intro to Data Structures
