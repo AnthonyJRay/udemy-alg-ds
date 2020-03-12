@@ -765,6 +765,14 @@ Most _merge sort_ algorithms take advangage of _Recursion_
 - That way the length of the arrays are either 1, or 0.
 - Once you have smaller sorted arrays, ( arrays with length of 1 or 0 are assumed sorted ), merge those arrays with other sorted arrays until you are back at the full length of the array.
 
+_Time Complexity_
+Best - O(n log n)
+Average - O(n log n)
+Worst - O(n log n)
+
+_Space Complexity_
+O(n)
+
 ---
 
 ## Section: 8 - Intro to Data Structures
