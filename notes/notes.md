@@ -773,9 +773,195 @@ Worst - O(n log n)
 _Space Complexity_
 O(n)
 
+**Quick Sort**
+
+- Like Merge Sort, Quick Sort exploits the fact that arrays of 0 or 1 element are always sorted.
+
+- Works by selecting one element (called the "pivot") and finding the index where the pivot should end up in the sorted array.
+
+- Once the pivot is positioned, appropriately, _quick sort_ can be applied on either side of the pivot.
+
+_Pivot Helper_
+
+- In order to implement merge sort, it's useful to first implement a function responsible for arranging elements in an array on either side of a pivot.
+
+- Given an array, this helper function should designate an element as the pivot.
+
+- It should then rearrange elements in the array so that all values less than the pivot are moved to the left of the pivot, and all values greater than the pivot are moved to the right of the pivot.
+
+- The order of element on either side of the pivot doesn't matter!
+
+- The helper should do this _in place_ that is, it should not create a new array.
+
+- When complete, the helper should return the index of the pivot.
+
+_Picking a Pivot_
+
+Picking a pivot, is actually an important decision.
+
+- The runtime of quick sort depends in part on how one selects the pivot.
+
+- Ideally, the pivot should be chosen so that it's roughly the median value in the data set you're sorting.
+
+_Pivot Pseudocode_
+
+- Write a function that accepts three arguments: an array, a start index, and an end index. (these can default to 0 and the array length minus 1, respectively)
+
+- Grab the pivot ( start, middle, end, anywhere )
+
+- Store the current pivot index in a variable ( this will keep track of where the pivot should end up )
+
+- Loop through the array form the start until the end.
+
+  - If the pivot is greater than the current element, increment the pivot index variable and than swap the current element with the element at the pivot index.
+
+- Swap the starting element (i.e. the pivot ) with the pivot index.
+
+- Return the pivot index.
+
+_Quicksort Pseudocode_
+
+- Call the pivot helper on the array
+
+- When the helper returns the updated pivot index, recursively call the pivot helper on the subarray to the left of that index and the subarray to the right of that index.
+
+_Quicksort_ time complexity can increase when taking the very minimum or the maximum number, in that case the decomposition time goes from O(n logn) to O(n).
+
+With comparison time being O(n) already, this would turn Quicksort into O(n^2), or quadratic time.
+
+Usually good to pick something from the middle somewhere are your pivot. It's best to try and pick from where the minimum or maximum could be least likely. Although keep in mind, in an unsorted array, the middle you are grabbing could end up being the minimum or maximum value.
+
+---
+
+All of the previous sorts, are all _Comparison Sorts_ with the worst of them being O(n^2) like Bubble, Selection, and Insertion Sort and O(n log(n)) like Merge and Quicksort.
+
+We _can_ do even _better_ than O(n log(n))...... **sometimes**
+
+It depends, but we can't do it by using comparisons or a comparison type of sort.
+
+For example, there are a group of sorts called _Integer Sorting Algorithms_ that would only work on _integers_
+
+**Radix Sort**
+
+- _Radix Sort_ is a special sorting algorithm that works on lists of numbers.
+
+- It never makes comparisons between elements.
+
+- It exploits the fact that information about the size of a number is encoded in the number of digits. More digits obviously mean a bigger number!
+  - For example, 99 < 111
+
+_Radix Sort Helpers_
+
+In order to implement _Radix Sort_ it's helpful to build a few helper functions first:
+
+getDigit(num place) - returns the digit in _num_ at the given _place_ value.
+
+```js
+getDigit(12345, 0); // 5
+getDigit(12345, 1); // 4
+getDigit(12345, 2); // 3
+getDigit(12345, 3); // 2
+getDigit(12345, 4); // 1
+getDigit(12345, 5); // 0
+```
+
+Unlike an array or string, getDigit works in reverse, where the last digit is the first index, ie (12345, 0) = 5.
+
+Unfortunately there isn't an easy way to achieve this in JavaScript, you will have to write your own methods.
+
+```js
+function getDigit(num, i) {
+  return Math.floor(Math.abs(num) / Math.pow(10, i)) % 10;
+}
+
+// 7323 / 100
+// 73.23 <-- floor to 73
+// 73 % 10 = 3
+
+// The value at index 2, of 7323 is 3..
+// Remember we are working backwards.
+```
+
+In the above example, you can ignore the _Math.abs()_ as it is there just in case of negative numbers.
+
+_Radix Sort Pseudocode_
+
+- Define a function that accepts a list of numbers.
+- Figure out how many digits in the largest number.
+- Loop from k = 0 up to this largest number of digits.
+  - Each time through, create "buckets" for each digit ( 0 to 9 )
+    - A bucket being an array. A good way is creating an array, with 10 sub arrays.
+    - Place each number in the corresponding bucket based on it's _k'th_ digit.
+    - Replace our existing array with value in our buckets, starting with 0 and going up to 9.
+    - return list at the end.
+
 ---
 
 ## Section: 8 - Intro to Data Structures
+
+_What is a data structure?_
+
+- _Data Structures_ are collections of values, the relationships among them, and then functions or operations that can be applied to the data.
+
+- The more time you spend as a developer, the more likely you'll need to use one of these data structures.
+  - You've already worked with many of them unknowingly! (i.e. The DOM)
+
+_There is no one "Best" data structure_
+
+- They all excel in different situations.
+
+  - Working with Maps or Location? Use a _Graph_!
+
+  - Need an ordered list with fast inserts/removals at the beginning and end? Use a _Linked List_!
+
+  - Web scraping nested HTML? Use a _Tree_!
+
+  - Need to write a scheduler w/ tasks? Use a _Binary Heap_!
+
+**ES2015 Class Syntax**
+
+A _class_ is a blueprint for creating objects with pre-defined properties and methods.
+
+The method to create new objects _must_ be called constructor.
+
+The class keyword creates a constant, so you can not redefine it. Watch out for the syntax as well!
+
+```js
+class Student {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.tardies = 0;
+    this.scores = [];
+  }
+  fullName() {
+    return `Your full name is ${this.firstName} ${this.lastName}`;
+  }
+  markLate() {
+    this.tardies += 1;
+    if (this.tardies >= 1) {
+      return 'You are expelled!';
+    }
+    return `${this.firstName} ${this.lastName} has been late ${this.tardies} times.`;
+  }
+  addScore(score) {
+    this.scores.push(score);
+    return this.scores;
+  }
+}
+
+let anthony = new Student('Anthony', 'Eriksen');
+anthony.fullName(); // Anthony Eriksen
+anthony.addScore(92);
+anthony.addScore(89);
+anthony.scores; // [ 92, 89 ]
+```
+
+_Instance Methods_
+
+- Instance Methods are methods that provide functionality to a single instance, or individual class.
+  - For example, _.push()_ is an Instance Method of an array, and it pertains only to the array it's being called on.
+  - The above _fullName()_ method is an example of an Instance Method.
 
 ## Section: 9 - Singly Linked Lists
 
@@ -796,6 +982,14 @@ O(n)
 ## Section: 17 - Graph Traversal
 
 ## Section: 18 - Dijkstra's Algorithm ( Shortest Path )
+
+```
+
+```
+
+```
+
+```
 
 ```
 

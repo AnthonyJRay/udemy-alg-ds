@@ -811,39 +811,112 @@
 
 // insertionSort([2, 1, 9, 76, 4]);
 
-function merge(arr1, arr2) {
-  let results = [];
-  let i = 0;
-  let j = 0;
-  while (i < arr1.length && j < arr2.length) {
-    if (arr2[j] > arr1[i]) {
-      results.push(arr1[i]);
-      i++;
-    } else {
-      results.push(arr2[j]);
-      j++;
-    }
-  }
-  while (i < arr1.length) {
-    results.push(arr1[i]);
-    i++;
-  }
-  while (j < arr2.length) {
-    results.push(arr2[j]);
-    j++;
-  }
-  return results;
-}
+// MERGE SORT
 
-function mergeSort(arr) {
-  if (arr.length <= 1) {
-    return arr;
-  }
+// function merge(arr1, arr2) {
+//   let results = [];
+//   let i = 0;
+//   let j = 0;
+//   while (i < arr1.length && j < arr2.length) {
+//     if (arr2[j] > arr1[i]) {
+//       results.push(arr1[i]);
+//       i++;
+//     } else {
+//       results.push(arr2[j]);
+//       j++;
+//     }
+//   }
+//   while (i < arr1.length) {
+//     results.push(arr1[i]);
+//     i++;
+//   }
+//   while (j < arr2.length) {
+//     results.push(arr2[j]);
+//     j++;
+//   }
+//   return results;
+// }
 
-  let mid = Math.floor(arr.length / 2);
-  let left = mergeSort(arr.slice(0, mid));
-  let right = mergeSort(arr.slice(mid));
-  return merge(left, right);
-}
+// function mergeSort(arr) {
+//   if (arr.length <= 1) {
+//     return arr;
+//   }
 
-console.log(mergeSort([34, 27, 18, 5, 10, 22, 3, 4, 19, 37]));
+//   let mid = Math.floor(arr.length / 2);
+//   let left = mergeSort(arr.slice(0, mid));
+//   let right = mergeSort(arr.slice(mid));
+//   return merge(left, right);
+// }
+
+// console.log(mergeSort([34, 27, 18, 5, 10, 22, 3, 4, 19, 37]));
+
+// QUICK SORT
+
+// Pivot helper functions
+
+// const pivot = (arr, start = 0, end = arr.length + 1) => {
+//   const swap = (array, i, j) => {
+//     let temp = array[i];
+//     array[i] = array[j];
+//     array[j] = temp;
+//   };
+
+//   let pivot = arr[start];
+//   let swapIndex = start;
+//   for (let i = start + 1; i < arr.length; i++) {
+//     if (pivot > arr[i]) {
+//       swapIndex++;
+//       swap(arr, swapIndex, i);
+//     }
+//   }
+//   swap(arr, start, swapIndex);
+//   return swapIndex;
+// };
+// // console.log(pivot([4, 8, 2, 1, 5, 7, 6, 3]));
+
+// const quickSort = (arr, left = 0, right = arr.length - 1) => {
+//   if (left < right) {
+//     let pivotIndex = pivot(arr, left, right);
+//     quickSort(arr, left, pivotIndex - 1);
+//     quickSort(arr, pivotIndex + 1, right);
+//   }
+//   return arr;
+// };
+
+// console.log(quickSort([4, 6, 7, 1, 2, 5, 3]));
+
+// RADIX SORT
+
+// function getDigits(num, i) {
+//   return Math.floor(Math.abs(num) / Math.pow(10, i)) % 10;
+// }
+
+// function digitCount(num) {
+//   if (num === 0) {
+//     return 1;
+//   }
+//   return Math.floor(Math.log10(Math.abs(num))) + 1;
+// }
+
+// function mostDigits(nums) {
+//   let maxDigits = 0;
+//   for (let i = 0; i < nums.length; i++) {
+//     maxDigits = Math.max(maxDigits, digitCount(nums[i]));
+//   }
+//   return maxDigits;
+// }
+
+// function radixSort(nums) {
+//   let maxDigitCount = mostDigits(nums);
+//   for (let k = 0; k < maxDigitCount; k++) {
+//     let digitBuckets = Array.from({ length: 10 }, () => []);
+//     for (let i = 0; i < nums.length; i++) {
+//       let digit = getDigits(nums[i], k);
+//       digitBuckets[digit].push(nums[i]);
+//     }
+//     nums = [].concat(...digitBuckets);
+//   }
+//   return nums;
+// }
+
+// console.log(radixSort([23, 345, 5467, 12, 2345, 9852]));
