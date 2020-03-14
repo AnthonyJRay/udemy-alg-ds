@@ -1047,6 +1047,10 @@ So one of the biggest, or only reason you would want to use a Linked List is if 
 
 A good idea for in the case of having a very long or large amount of data, and you don't need random access to it but just to add and/or remove items, is to use a _Linked List_
 
+When popping something off the list, remember to add a check if the length is === 0, then set the head and tail to null. Otherwise the length will decrement and the current, or head will remain.
+
+See _app.js_ for methods code.
+
 ## Section: 10 - Doubly Linked Lists
 
 ## Section: 11 - Stacks and Queues
