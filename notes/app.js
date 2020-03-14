@@ -920,3 +920,45 @@
 // }
 
 // console.log(radixSort([23, 345, 5467, 12, 2345, 9852]));
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Singly Linked List
+
+class Node {
+  constructor(val) {
+    this.val = val;
+    this.next = null;
+  }
+}
+
+class SinglyLinkedList {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+  }
+  push(val) {
+    var nextNode = new Node(val);
+    if (!this.head) {
+      this.head = nextNode;
+      this.tail = this.head;
+    } else {
+      this.tail.next = nextNode;
+      this.tail = nextNode;
+    }
+    this.length += 1;
+    return this;
+  }
+}
+
+var list = new SinglyLinkedList();
+
+console.log(list);
+
+list.tail = 'Hello';
+
+console.log(list.tail);
+
+list.tail.next = 'Goodbye';
+console.log(list.tail.next);

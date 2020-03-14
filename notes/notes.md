@@ -948,6 +948,12 @@ class Student {
     this.scores.push(score);
     return this.scores;
   }
+  calculateAverage() {
+    this.scores.reduce((a, b) => {
+      return a + b;
+    });
+    return sum / this.scores.length;
+  }
 }
 
 let anthony = new Student('Anthony', 'Eriksen');
@@ -955,6 +961,8 @@ anthony.fullName(); // Anthony Eriksen
 anthony.addScore(92);
 anthony.addScore(89);
 anthony.scores; // [ 92, 89 ]
+anthony.addScore(78);
+anthony.calculateAverage(); // 86.333333...
 ```
 
 _Instance Methods_
@@ -963,7 +971,81 @@ _Instance Methods_
   - For example, _.push()_ is an Instance Method of an array, and it pertains only to the array it's being called on.
   - The above _fullName()_ method is an example of an Instance Method.
 
+---
+
+_Class Methods_
+
+- Class methods are more like a utility function, than being related to a _single_ instance.
+
+- The _static_ keyword defines a static method for a class. Static methods are called without _instantiating_ their class and _cannot_ be called through a class instance. Static methods are often used to create utility functions for an application.
+
+- Class methods are not commonly used.
+
+- Class methods can only be used on/with the class itself! Not with any of the instances created by that class. It is not accessible, only the class can access it.
+
+- It allows the Class itself to run functionality using the data in objects created by it. This is how it's more of a _utility_ function.
+
+```js
+class Point {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+  static distance(a, b) {
+    const dx = a.x - b.x;
+    const dy = a.y - b.y;
+  }
+}
+
+const p1 = new Points(5, 5);
+const p2 = new Points(10, 10);
+
+p1.distance(); // Error
+Point.distance(p1, p2); // 7.07106.......
+```
+
+**RECAP**
+
+- Classes are blueprints that when created make objects known as _instances_
+- Classes are created with the _new_ keyword.
+- The _constructor_ function is a special function that gets run when the class is instantiated.
+- Instance methods can be added to classes similar to methods in objects.
+- Class methods can be added using the _static_ keyword.
+
+---
+
 ## Section: 9 - Singly Linked Lists
+
+- A _Linked List_ is a data structure that contains a _head, tail and length_ property.
+
+- _Linked Lists_ consist of nodes, and each _node_ has a _value_ and a _pointer_ to another node or null.
+
+A _Singly_ linked list only contains a pointer to the next node, whereas a _Doubly_ linked list also contains a pointer to it's previous node.
+
+_Comparisons with Arrays_
+
+- Linked Lists
+
+  - Do not have indices!
+  - Connected via nodes with a next pointer
+  - Random access is not allowed
+
+- Arrays
+
+  - Indexed in order!
+  - Insertion and deletion can be expensive
+  - Can quickly be accessed at a specific index
+
+Linked Lists start with a _head_ which points to the NEXT node in the list until the _tail_ which is the end. The end has no pointer to next, or it points to null.
+
+Using Linked Lists allows you to insert and remove nodes in _constant_ time. Whereas with Arrays, when an item is inserted or removed from the start, the array must re-index itself to update the values with the proper indices.
+This makes _Linked Lists_ extremely good at _insertion_ and _deletion_
+
+Random access is not allowed because the nodes or values are _not_ indexed like an array, therefore to get a node, you MUST start at the head and go through each node in the chain (list) unless you get to the node you are trying to access.
+
+So one of the biggest, or only reason you would want to use a Linked List is if you care or need to care about the speed of insertion and deletion.
+
+A good idea for in the case of having a very long or large amount of data, and you don't need random access to it but just to add and/or remove items, is to use a _Linked List_
 
 ## Section: 10 - Doubly Linked Lists
 
