@@ -988,6 +988,55 @@ class SinglyLinkedList {
       return oldHead;
     }
   }
+
+  // Unshift method
+  unshift(val) {
+    let newNode = new Node(val);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    this.length++;
+    return this;
+  }
+
+  // Get method (my solution)
+//   get(index) {
+//     if (index < 0 || index >= this.length) {
+//       return null;
+//     }
+//     let counter = 0;
+//     let current = this.head;
+//     while (counter < this.length - 1) {
+//       if (counter === index) {
+//         break;
+//       }
+//       current = current.next;
+//       counter++;
+//     }
+//     return current;
+//   }
+// }
+
+// Get method (instructor solution)
+get(index) {
+  if(index < 0 || index >= this.length) return null;
+  let counter = 0;
+  let current = this.head;
+  while(counter !== index) {
+    current = current.next;
+    counter++
+  }
+  return current;
 }
 
-var list = new SinglyLinkedList();
+const list = new SinglyLinkedList();
+// list.push('hello');
+// list.push('goodbye');
+// list.push('How are you');
+// list.push('today');
+// console.log(list);
+// console.log(list.get(0)
