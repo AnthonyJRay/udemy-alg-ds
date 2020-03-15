@@ -1051,7 +1051,51 @@ When popping something off the list, remember to add a check if the length is ==
 
 See _app.js_ for methods code.
 
+---
+
+_Push_
+
+- Inserts a new element to the end of a Linked List.
+  _Pop_
+- Removes the last element in a Linked List.
+  _Shift_
+- Removes the first element in a Linked List and returns it.
+  _Unshift_
+- Inserts a new element at the beginning of the Linked List.
+  _Get_
+- Returns a given positions value in the Linked List.
+  _Set_
+- Changing the value of a node based on it's position in the Linked List.
+  _Insert_
+- Adding a node to the Linked List at a specific position.
+  _Remove_
+- Removing a node from the Linked List at a specific position.
+  _Reverse_
+- Reversing the Linked List in place.
+
+Linked Lists BigO Complexity -
+
+- Insertion O(1)
+- Removal: O(1) or O(n)
+  - This depends on where the removal is. At the beginning is easy at O(1), at the end it takes O(n) because you must iterate through the list, starting from the head.
+- Searching: O(n)
+- Accessing: O(n)
+
+_Recap_
+
+- Singly Linked Lists are an excellent alternative to arrays when insertion and deletiong at the beginning are frequently required.
+
+- Arrays contain a built in index whereas Linked Lists do not.
+
+- The idea of a list data structure that consists of nodes is the foundation for other data structures like Stacks and Queues.
+
 ## Section: 10 - Doubly Linked Lists
+
+Doubly Linked Lists are almost identical to Singly Linked Lists, except that every node has another pointer the it's previous node.
+
+The real _drawback_ to Doubly Linked Lists versus Singly Linked Lists is more memory. Each node will have their own previous property taking up more memory.
+
+With the added drawback of more memory usage, comes the advantage of more flexibility.
 
 ## Section: 11 - Stacks and Queues
 
