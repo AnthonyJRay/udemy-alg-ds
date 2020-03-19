@@ -1097,7 +1097,68 @@ The real _drawback_ to Doubly Linked Lists versus Singly Linked Lists is more me
 
 With the added drawback of more memory usage, comes the advantage of more flexibility.
 
+_Recap_
+
+- Doubly Linked Lists are almost identical to Singly Linked Lists except there is an additional pointer to previous nodes.
+
+- Better than Singly Linked Lists for finding nodes and can be done in half the time.
+
+- However, they do take up more memory considering the extra pointer.
+
 ## Section: 11 - Stacks and Queues
+
+**Stacks**
+
+- A collection of data, that must abide by a _LIFO_ principal.
+
+- A stack is a _LIFO_ data structure.
+
+  - _Last in - First out_
+
+- The last element added to the stack will be the first element removed from the stack.
+
+- There a several ways to implement a stack, a Linked List is one of them!
+
+_Where Stacks are used_
+
+- Managing function invocations.
+- Undo / Redo functionality e.g. Like in PhotoShop!
+- Routing (this history object in the browser) is treated like a stack!
+
+There is more than one way of implementing a stack. It is an abstract concept.
+
+The easiest way to implement a _Stack_ is to use an _array_
+Many other programming languages come with their own _Stack_ functionality, but JavaScript does not.
+
+By using push and pop in tandem on an Array, you are already using a Stack! As long as these are the only methods of adding and removing elements, and not being able to add or remove elements from the middle, etc.
+
+_Recap_
+
+- Stacks are a LIFO (last in - first out) data structure where the last value in is always the first one out.
+
+- Stacks are used to handle function invocations (the call stack, see recursion), for operations like undo/redo, and for routing(remembering pages previously visited, and go back/forward) and much more!
+
+- They are not a built-in data structure in JavaScript, but are simple to implement.
+
+---
+
+__Queues__
+
+---
+
+_What is a queue?_
+
+- Queues are a FIFO (first in - first out) data structure.
+
+- Background tasks
+- Uploading resources
+- Printing / Task processing
+
+Can be implemented using an _array_ or _class_
+
+
+
+
 
 ## Section: 12 - Binary Search Trees
 
