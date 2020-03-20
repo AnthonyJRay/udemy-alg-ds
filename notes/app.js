@@ -1299,59 +1299,135 @@
 
 // A Stack Class
 
-class Node {
+// class Node {
+//   constructor(value) {
+//     this.value = value;
+//     this.next = null;
+//   }
+// }
+
+// class Stack {
+//   constructor() {
+//     this.first = null;
+//     this.last = null;
+//     this.size = 0;
+//   }
+//   push(val) {
+//     let newNode = new Node(val);
+//     if (!this.first) {
+//       this.first = newNode;
+//       this.last = newNode;
+//     } else {
+//       let temp = this.first;
+//       this.first = newNode;
+//       this.first.next = temp;
+//     }
+//     return ++this.size;
+//   }
+//   // INSTRUCTOR SOLUTION
+//   pop() {
+//     if (!this.first) return null;
+//     let temp = this.first;
+//     if (this.first === this.last) {
+//       this.last === null;
+//     }
+//     this.first = this.first.next;
+//     this.size--;
+//     return temp.value;
+//   }
+// MY SOLUTION
+// pop() {
+//   if (!this.first) return null;
+//   let temp = this.first;
+//   if (this.first === this.last) {
+//     this.first = null;
+//     this.last = null;
+//   } else {
+//     this.first = temp.next;
+//   }
+//   this.size--;
+//   return temp;
+// }
+// }
+
+// const stack = new Stack();
+// stack.push('Hello');
+// stack.push('Goodbye');
+// stack.push('Greetings');
+// stack.push('Salutations');
+
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+
+// QUEUES
+
+// class Queue {
+//   constructor() {
+//     this.first = null;
+//     this.last = null;
+//     this.size = 0;
+//   }
+//   enqueue(val) {
+//     if (!this.first) {
+//       this.first = newNode;
+//       this.last = newNode;
+//     } else {
+//       this.last.next = newNode;
+//       this.last = newNode;
+//     }
+//     return ++this.size;
+//   }
+
+//   dequeue() {
+//     if (!this.first) return null;
+//     let first = this.first;
+//     if (this.first === this.last) {
+//       this.last = null;
+//     }
+//     this.first.next = first;
+//     this.size--;
+//     return temp.value;
+//   }
+// }
+
+class BinaryNode {
   constructor(value) {
     this.value = value;
-    this.next = null;
+    this.left = null;
+    this.right = null;
   }
 }
 
-class Stack {
+class BinarySearchTree {
   constructor() {
-    this.first = null;
-    this.last = null;
-    this.size = 0;
+    this.root = null;
   }
-  push(val) {
-    let newNode = new Node(val);
-    if (!this.first) {
-      this.first = newNode;
-      this.last = newNode;
+  insert(val) {
+    let newNode = new BinaryNode(val);
+    if (this.root === null) {
+      this.root = newNode;
+      return this;
     } else {
-      let temp = this.first;
-      this.first = newNode;
-      this.first.next = temp;
+      let current = this.root;
+      while (true) {
+        if (val === current.val) return undefined;
+        if (val < current.val) {
+          if (current.left === null) {
+            current.left = newNode;
+            return this;
+          } else {
+            current = current.left;
+          }
+        } else if (value > current.value) {
+          if (current.right === null) {
+            current.right = newNode;
+            return this;
+          } else {
+            current = current.right;
+          }
+        }
+      }
     }
-    return ++this.size;
   }
-  // INSTRUCTOR SOLUTION
-  pop() {
-    if (!this.first) return null;
-    let temp = this.first;
-    if (this.first === this.last) {
-      this.last === null;
-    }
-    this.first = this.first.next;
-    this.size--;
-    return temp.value;
-  }
-  // MY SOLUTION
-  // pop() {
-  //   if (!this.first) return null;
-  //   let temp = this.first;
-  //   if (this.first === this.last) {
-  //     this.first = null;
-  //     this.last = null;
-  //   } else {
-  //     this.first = temp.next;
-  //   }
-  //   this.size--;
-  //   return temp;
-  // }
 }
-
-const stack = new Stack();
-stack.push('Hello');
-stack.push('Goodbye');
-stack.push('Greetings');
-stack.push('Salutations');

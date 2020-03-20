@@ -1142,7 +1142,7 @@ _Recap_
 
 ---
 
-__Queues__
+**Queues**
 
 ---
 
@@ -1156,11 +1156,60 @@ _What is a queue?_
 
 Can be implemented using an _array_ or _class_
 
+Creating and using queues in arrays is simple as long as you follow the first in/first out principle!
 
+Push - Add items to end of array
+Shift - Remove items from the beginning
 
+_OR_
 
+Unshift - Add items from the beginning
+Pop - Remove items from the end.
+
+Either methods work, as long as you are removing starting from the the _first_ item that was added to the Queue data structure, FIRST.
+
+No matter which way you choose, because of arrays having to reindex, this requires O(n) time, or linear time.
+
+When creating/using a Queue data structure, the methods for adding and removing and generally name _enqueue_ and _dequeue_
 
 ## Section: 12 - Binary Search Trees
+
+_What is a Tree?_
+
+- A data structure that consists of nodes in a _parent/child_ relationship.
+
+_Tree Terminology_
+
+Root - The top node in a tree.
+Child - A node directly connected to another node when moving away from the Root.
+Parent - The converse notion of a child.
+Siblings - A group of nodes with the same parent.
+Leaf - A node with no children.
+Edge - The connection between one node and another.
+
+_Uses for Trees_
+
+There are many different applications for Trees.
+
+- The DOM (Document Object Model)
+- Network Routing
+- Abstract Syntax Trees
+- Artificial Intelligence
+- Folders in an operating system
+- JSON
+
+Linked Lists are great when you don't require indexes and need fast insertion and removal from the beginning. Whereas arrays, take the advantage of indexing, they are also slow to add or remove elements from the beginning because the array needs to re-index itself.
+
+A _Binary Search Tree_ excels at.... Searching!
+
+- Every parent node has at most _two_ children.
+
+There are many ways of traversing a tree.
+The search part of a Binary Tree comes into play when it follows these principles...
+- Every node to the _left_ of a parent node is _always less_ than the parent.
+- Every node to the _right_ of a parent node is _always greater_ than the parent.
+
+
 
 ## Section: 13 - Tree Traversal ( Depth / Breadth First Search)
 
