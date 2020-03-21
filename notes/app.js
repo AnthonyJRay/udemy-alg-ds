@@ -1468,7 +1468,7 @@ class BinarySearchTree {
     return data;
   }
 
-  // Depth-first Search
+  // Depth-first Search (pre-order)
   depthFirstSearch() {
     let visited = [];
     function traverse(node) {
@@ -1478,5 +1478,17 @@ class BinarySearchTree {
     }
     traverse(this.root);
     return visited;
+  }
+
+  // Depth-first Search (post-order)
+  DFSPostOrder() {
+    let data = [];
+    function traverse(node) {
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+      data.push(node.value);
+    }
+    traverse(this.root);
+    return data;
   }
 }

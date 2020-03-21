@@ -1206,6 +1206,7 @@ A _Binary Search Tree_ excels at.... Searching!
 
 There are many ways of traversing a tree.
 The search part of a Binary Tree comes into play when it follows these principles...
+
 - Every node to the _left_ of a parent node is _always less_ than the parent.
 - Every node to the _right_ of a parent node is _always greater_ than the parent.
 
@@ -1218,11 +1219,92 @@ There are 2 _main_ ways of traversing a tree.
 - Breadth-first Search
 - Depth-first Search
 
+_Breadth-first Search_ will traverse a tree following each level or layer of a tree starting from the root, moving left to right until reaching the bottom.
 
+**Breadth-first Search**
+10
+6 15
 
+3 8 20
 
+Output: [10, 6, 15, 3, 8, 20]
+
+_Depth-first Search_ has a few different ways it may traverse a tree. - _Pre-order_ which will traverse a tree by starting at the Root, and working it's way down the tree 1 by 1, in order, starting with one side at a time. Below, the traversal starts on the left half of the tree, until it reaches the last node on the bottom, the starts back up at the top of the right side, and works it's way down.
+
+**Pre-order**
+
+        10
+    6       15
+
+3 8 20
+
+Output: [10, 6, 3, 8, 15, 20]
+
+_Post-order_ is similar to _post-order_ in how to traverses, except instead of starting from the root, it traverses to the bottom of a chosen side and continues upward in the same fashion as _pre-order_ and ENDING on the Root.
+
+**Post-order**
+
+                 10
+             6        15
+         3       8         20
+
+Output: [3, 8, 6, 20, 15, 10]
+
+The difference between _pre-order_ and _post-order_ in the **code** is very minimal. It simply comes down to where you place the _push_ functionality. Either before the if statements and recursive calls, or after them.
+
+If you push the node first, then it will start at the top, which is what _pre-order_ does. However, pushing _after_ the recursive calls, they don't stop recursively calling until the bottom, for which they will then all push the values, which would be pushing starting from the bottom. This is what _post-order_ does.
+
+**In-Order**
+
+                 10
+             6        15
+         3       8         20
+
+Output: [3, 6, 8, 210, 15, 20]
+
+The order for which you traverse a tree using depth-first search solely depends on where/when you push your data.
+
+Either before, after, or between the recursive calls of the 2 sides.
+
+---
+
+_BFS vs DFS when to use?_
+
+If you're tree is more wide than it is deep, DFS is generally a better option. If you are have wide tree, the space complexity get's really big with BFS because of storing each node in the queue. Alternatively if you have a small, or lop sided tree, or the tree is deeper than it is wide, then BFS could be a better option.
+
+The time complexity for each searching algorithm is the _same_
+It's the space complexity that differs, and with a wide tree, using a BFS may eat up too much space in memory.
+
+Most of the time you will be working with a wide tree, instead of a long or deep one sided tree, so you will most often reach for a BFS solution.
+
+_Recap_
+
+- Trees are a non-linear data structure that contain a root and child nodes.
+- Binary Trees can have values of any type, but at most two children for each parent.
+- Binary Search Trees are a more specific version of binary trees where every node to the left of a parent is less than it's value and every node to the right is greater.
+- We can search through Trees using _Breath-first Search_ and _Depth-first Search_
 
 ## Section: 14 - Binary Heaps ( Priority Queue)
+
+Heaps are trees! Everything that applies to Trees in general, applies to Heaps, except there are some special rules to these specific type of Trees.
+
+- In a _MaxBinaryHeap_ the parent nodes are always larger than the child nodes.
+- In a _MinBinaryHeap_ the parent nodes are always smaller than the child nodes.
+
+_MaxBinaryHeap_
+- Each parent has at most two child nodes
+- The value of each parent node is always greater than it's child nodes.
+- In a MaxBinaryHeap the parent is greater than the children, but there are no guarentees between sibling nodes.
+- A binary heap is as compact as possible. All of the children of each node are as full as they can be and left children are filled out first.
+
+Binary Heaps are used to implement _Priority Queues_ which are very commonly used data structures.
+
+They are also commonly used with _Graph Traversal_ algorithms.
+
+__Storing Heaps__
+
+There's an easy way of storing a Binary Heap by using a list or an Array.
+
 
 ## Section: 15 - Hash Tables
 
