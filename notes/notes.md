@@ -1209,9 +1209,18 @@ The search part of a Binary Tree comes into play when it follows these principle
 - Every node to the _left_ of a parent node is _always less_ than the parent.
 - Every node to the _right_ of a parent node is _always greater_ than the parent.
 
-
-
 ## Section: 13 - Tree Traversal ( Depth / Breadth First Search)
+
+There are many ways to traverse tree's, whereas with Linked Lists, there's really only 1 way. Start from the head, until you reach the tail.
+
+There are 2 _main_ ways of traversing a tree.
+
+- Breadth-first Search
+- Depth-first Search
+
+
+
+
 
 ## Section: 14 - Binary Heaps ( Priority Queue)
 
