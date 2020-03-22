@@ -1305,6 +1305,53 @@ __Storing Heaps__
 
 There's an easy way of storing a Binary Heap by using a list or an Array.
 
+For any index of an array n...
+The left child is stored at 2n +1
+The right child is at 2n + 2
+
+For any child node at index n...
+It's parent is at index (n-1)/2. _Remember to floor it_
+
+Adding to a MaxBinaryHeap
+- Add to the end
+- Bubble up
+
+When adding something to a Binary Heap, you add it to the end and it "bubbles up" by comparing itself to it's parent on the way up until it finds the spot it should be.
+
+Binary Heaps always fill up the left side first, then the right. When using an array, adding a value to the end would always be adding the value to the left-most side of the Binary Heap.
+
+__Removing from a Heap__
+
+  - Remove the root
+  - Replace with the most recently added element
+  - Adjust (sink down) the element, till it's in it's correct lowest position.
+
+
+When removing from a heap, the one area you remove from is the _Root_
+
+In a maxBinaryHeap you would remove the _maximum_ value.
+In a minBinaryHeap you would remove the _minimum_ value.
+
+So when trying to use/implement something like a _Priority Queue_
+the highest priority in a maxBinaryHeap would be the maximum value, which is always at the top/root.
+
+After removing the root, you need to find the new root.
+
+The way of implementing this is to replace the root with the _last_ element in the list/array, and _sinking_ it down to the bottom into it's correct place. It's just the opposite of "bubbling up".
+
+There are many names or terms you may run into for this procedure, but they are all doing the _same thing_
+
+- bubble-down
+- sink-down
+- percolate-down
+- trickledown
+- ect ect
+
+Just remember they all do the same thing!
+
+In this case we are calling it _sink down_
+
+  - The procedure for deleting the root from the heap (effectively extracting the maximum element in a max-heap or the minimum element in a min-heap) and restoring the properties.
 
 ## Section: 15 - Hash Tables
 

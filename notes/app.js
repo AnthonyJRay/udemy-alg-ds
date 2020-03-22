@@ -1391,104 +1391,187 @@
 //   }
 // }
 
-class BinaryNode {
-  constructor(value) {
-    this.value = value;
-    this.left = null;
-    this.right = null;
-  }
-}
+// class BinaryNode {
+//   constructor(value) {
+//     this.value = value;
+//     this.left = null;
+//     this.right = null;
+//   }
+// }
 
-class BinarySearchTree {
+// class BinarySearchTree {
+//   constructor() {
+//     this.root = null;
+//   }
+
+//   // Insert method
+//   insert(value) {
+//     let newNode = new BinaryNode(value);
+//     if (this.root === null) {
+//       this.root = newNode;
+//       return this;
+//     } else {
+//       let current = this.root;
+//       while (true) {
+//         if (value === current.value) return undefined;
+//         if (value < current.value) {
+//           if (current.left === null) {
+//             current.left = newNode;
+//             return this;
+//           } else {
+//             current = current.left;
+//           }
+//         } else if (value > current.value) {
+//           if (current.right === null) {
+//             current.right = newNode;
+//             return this;
+//           } else {
+//             current = current.right;
+//           }
+//         }
+//       }
+//     }
+//   }
+
+//   // Find method
+//   find(value) {
+//     if (this.root === null) return false;
+//     let current = this.root;
+//     let found = false;
+//     while (current && !found) {
+//       if (value < current.value) {
+//         current = current.left;
+//       } else if (value > current.value) {
+//         current = current.right;
+//       } else {
+//         found = true;
+//       }
+//     }
+//     if (!found) return undefined;
+//     return current;
+//   }
+
+//   // Breadth-first Search
+//   breadthFirstSearch() {
+//     let data = [];
+//     let queue = [];
+//     let node = this.root;
+
+//     queue.push(this.root);
+
+//     while (queue.length) {
+//       node = queue.shift();
+//       data.push(node.value);
+//       if (node.left) queue.push(node.left);
+//       if (node.right) queue.push(node.right);
+//     }
+//     return data;
+//   }
+
+//   // Depth-first Search (pre-order)
+//   depthFirstSearch() {
+//     let data = [];
+//     function traverse(node) {
+//       data.push(node);
+//       if (node.left) traverse(node.left);
+//       if (node.right) traverse(node.right);
+//     }
+//     traverse(this.root);
+//     return data;
+//   }
+
+//   // Depth-first Search (post-order)
+//   DFSPostOrder() {
+//     let data = [];
+//     function traverse(node) {
+//       if (node.left) traverse(node.left);
+//       if (node.right) traverse(node.right);
+//       data.push(node.value);
+//     }
+//     traverse(this.root);
+//     return data;
+//   }
+
+//   // Depth-first Search (in-order)
+//   DFSInOrder() {
+//     let data = [];
+//     function traverse(node) {
+//       if (node.left) traverse(node.left);
+//       data.push(node.value);
+//       if (node.right) traverse(node.right);
+//     }
+//     traverse(this.root);
+//     return data;
+//   }
+// }
+
+class MaxBinaryHeap {
   constructor() {
-    this.root = null;
+    this.values = [];
+  }
+  insert(element) {
+    this.values.push(element);
+    let index = this.values.length - 1;
+    const value = this.values[index];
+    while (true) {
+      let parentIndex = Math.floor((index - 1) / 2);
+      let parent = this.values[parentIndex];
+      if (value <= parent) break;
+      this.values[parentIndex] = value;
+      this.values[index] = parent;
+      index = parentIndex;
+    }
   }
 
-  // Insert method
-  insert(value) {
-    let newNode = new BinaryNode(value);
-    if (this.root === null) {
-      this.root = newNode;
-      return this;
-    } else {
-      let current = this.root;
-      while (true) {
-        if (value === current.value) return undefined;
-        if (value < current.value) {
-          if (current.left === null) {
-            current.left = newNode;
-            return this;
-          } else {
-            current = current.left;
-          }
-        } else if (value > current.value) {
-          if (current.right === null) {
-            current.right = newNode;
-            return this;
-          } else {
-            current = current.right;
-          }
+  extractMax() {
+    const max = this.values[0];
+    const end = this.values.pop();
+    if (this.values.length > 0) {
+      this.values[0] = end;
+      this.sinkDown();
+    }
+    return max;
+  }
+  sinkDown() {
+    let index = 0;
+    const length = this.values.length;
+    const element = this.values[0];
+    while (true) {
+      let leftChildIndex = 2 * index + 1;
+      let rightChildIndex = 2 * index + 2;
+      let leftChild;
+      let rightChild;
+      let swap = null;
+
+      if (leftChildIndex < length) {
+        leftChild = this.values[leftChildIndex];
+        if (leftChild > element) {
+          swap = leftChildIndex;
         }
       }
-    }
-  }
-
-  // Find method
-  find(value) {
-    if (this.root === null) return false;
-    let current = this.root;
-    let found = false;
-    while (current && !found) {
-      if (value < current.value) {
-        current = current.left;
-      } else if (value > current.value) {
-        current = current.right;
-      } else {
-        found = true;
+      if (rightChildIndex < length) {
+        rightChild = this.values[rightChildIndex];
+        if (
+          (swap === null && rightChild > element) ||
+          (swap !== null && rightChild > leftChild)
+        ) {
+          swap = rightChildIndex;
+        }
       }
+
+      if (swap === null) break;
+      this.values[index] = this.values[swap];
+      this.values[swap] = element;
+      index = swap;
     }
-    if (!found) return undefined;
-    return current;
-  }
-
-  // Breadth-first Search
-  breadthFirstSearch() {
-    let data = [];
-    let queue = [];
-    let node = this.root;
-
-    queue.push(this.root);
-
-    while (queue.length) {
-      node = queue.shift();
-      data.push(node.value);
-      if (node.left) queue.push(node.left);
-      if (node.right) queue.push(node.right);
-    }
-    return data;
-  }
-
-  // Depth-first Search (pre-order)
-  depthFirstSearch() {
-    let visited = [];
-    function traverse(node) {
-      visited.push(node);
-      if (node.left) traverse(node.left);
-      if (node.right) traverse(node.right);
-    }
-    traverse(this.root);
-    return visited;
-  }
-
-  // Depth-first Search (post-order)
-  DFSPostOrder() {
-    let data = [];
-    function traverse(node) {
-      if (node.left) traverse(node.left);
-      if (node.right) traverse(node.right);
-      data.push(node.value);
-    }
-    traverse(this.root);
-    return data;
   }
 }
+
+let heap = new MaxBinaryHeap();
+heap.insert(41);
+heap.insert(39);
+heap.insert(33);
+heap.insert(18);
+heap.insert(27);
+heap.insert(12);
+heap.insert(55);
