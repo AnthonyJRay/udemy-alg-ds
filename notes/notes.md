@@ -1292,6 +1292,7 @@ Heaps are trees! Everything that applies to Trees in general, applies to Heaps, 
 - In a _MinBinaryHeap_ the parent nodes are always smaller than the child nodes.
 
 _MaxBinaryHeap_
+
 - Each parent has at most two child nodes
 - The value of each parent node is always greater than it's child nodes.
 - In a MaxBinaryHeap the parent is greater than the children, but there are no guarentees between sibling nodes.
@@ -1301,7 +1302,7 @@ Binary Heaps are used to implement _Priority Queues_ which are very commonly use
 
 They are also commonly used with _Graph Traversal_ algorithms.
 
-__Storing Heaps__
+**Storing Heaps**
 
 There's an easy way of storing a Binary Heap by using a list or an Array.
 
@@ -1313,6 +1314,7 @@ For any child node at index n...
 It's parent is at index (n-1)/2. _Remember to floor it_
 
 Adding to a MaxBinaryHeap
+
 - Add to the end
 - Bubble up
 
@@ -1320,12 +1322,11 @@ When adding something to a Binary Heap, you add it to the end and it "bubbles up
 
 Binary Heaps always fill up the left side first, then the right. When using an array, adding a value to the end would always be adding the value to the left-most side of the Binary Heap.
 
-__Removing from a Heap__
+**Removing from a Heap**
 
-  - Remove the root
-  - Replace with the most recently added element
-  - Adjust (sink down) the element, till it's in it's correct lowest position.
-
+- Remove the root
+- Replace with the most recently added element
+- Adjust (sink down) the element, till it's in it's correct lowest position.
 
 When removing from a heap, the one area you remove from is the _Root_
 
@@ -1351,7 +1352,41 @@ Just remember they all do the same thing!
 
 In this case we are calling it _sink down_
 
-  - The procedure for deleting the root from the heap (effectively extracting the maximum element in a max-heap or the minimum element in a min-heap) and restoring the properties.
+- The procedure for deleting the root from the heap (effectively extracting the maximum element in a max-heap or the minimum element in a min-heap) and restoring the properties.
+
+---
+
+**Priority Queue**
+
+---
+
+A _Priority Queue_ is a data structure where each element has a priority.
+Elements with higher priorities are served before elements with lower priorities.
+
+_Priority Queues_ are seperate from heaps! They are just an abstract concept. You can implement a priority queue with an array or list. Although, they are slower in time complexity, it is possible.
+
+It is often or generally the case that the lowest number is the highest priority.
+Think like a "ranking" system.
+
+Creating a Priority Queue using a Binary Heap is very similar to a plain Binary Heap, with some small changes to it's conditionals.
+
+Also, unlike Heaps, Priority Queues do require a secondary _Node_ class, because each node will need to have a seperate value, and priority.
+
+Big O of Binary Heaps
+
+Both min and max Heaps are both
+
+Insertion - O(log n)
+Removal - O(log n)
+Search - O(N)
+
+__RECAP__
+
+- Binary Heaps are very useful data structures for sorting, and implementing other data structures like priority queues
+
+- Binary Heaps are either MaxBinaryHeaps or MinBinaryHEaps with parents either being smaller or larger than their children.
+
+- With just a little bit a math, we can represent heaps using arrays.
 
 ## Section: 15 - Hash Tables
 
