@@ -1390,6 +1390,40 @@ __RECAP__
 
 ## Section: 15 - Hash Tables
 
+_Hash Tables_ are used to store key/value pairs.
+
+They are like arrays, but the keys are not ordered.
+
+Unlike arrays, hash tables are fast for all of the following operations:
+    - finding values
+    - adding new values
+    - and removing values
+
+Nearly every programming language has some sort of hash table data structure.
+
+Because of their speed, hash tables are very commonly used.
+
+Hash Table Examples in other languages
+
+Python - Dictionaries
+JS - Objects and Maps*
+Java, Go, Scala - Maps
+Ruby - Hashes
+
+To implement a hash table, use an array.
+
+In order to look up values by key, there needs to be a way to _convert keys in valid array indices_.
+
+A function that performs this task is called a _hash function_
+
+What makes a good Hash Function?
+(not a cryptographically secure one)
+
+- Fast (i.e constant time)
+- Doesn't cluster outputs at specific indices, but distributes unfiromly.
+- Deterministic (same input yields same output)
+
+
 ## Section: 16 - Graphs
 
 ## Section: 17 - Graph Traversal
